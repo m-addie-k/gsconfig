@@ -127,12 +127,11 @@ class Layer(ResourceInfo):
         return self._resolve_style(element) if element is not None else None
 
     def _resolve_style(self, element):
-        # instead of using name or the workspace element (which only appears
-        # in >=2.4), just use the atom link href attribute
-        atom_link = [ n for n in element.getchildren() if 'href' in n.attrib ]
-        if atom_link:
-            style_workspace_url = atom_link[0].attrib.get("href")
-            return self.catalog.get_style_by_url(style_workspace_url)
+        name_section = element.find('name')
+        if name_section is not None:
+            return self.catalog.get_style(name_section.text)
+        else:
+            return None
 
     def _set_default_style(self, style):
         if isinstance(style, Style):
