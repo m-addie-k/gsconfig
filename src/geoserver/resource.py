@@ -116,7 +116,7 @@ class FeatureType(_ResourceBase):
     native_bbox = xml_property("nativeBoundingBox", bbox)
     latlon_bbox = xml_property("latLonBoundingBox", bbox)
     projection = xml_property("srs")
-    projection_policy = xml_property("projectionPolicy")
+    projectionPolicy = xml_property("projectionPolicy")
     keywords = xml_property("keywords", string_list)
     attributes = xml_property("attributes", attribute_list)
     metadata_links = xml_property("metadataLinks", metadata_link_list)
